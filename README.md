@@ -1,8 +1,7 @@
-<h1 align="center"> DevLinks </h1>
+<h1 align="center"> Portfolio Prototype </h1>
 
 <p align="center">
-Projeto feito buscando aprender e aprimoar minhas skills como um dev frontend. <br/>
-<a href="https://lp.rocketseat.com.br/devlinks/inscricao?utm_source=github&utm_medium=descricao&utm_campaign=capture-devlinks&utm_term=organic&utm_content=descricao-github-mayk-brito">Estude esse projeto em formato de vídeo clicando aqui.</a>
+Projeto feito buscando aprender e aprimorar minhas skills como um dev frontend. <br/>
 </p>
 
 <p align="center">
