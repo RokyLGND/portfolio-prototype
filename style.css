@@ -1,0 +1,204 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+/* essa funcao aqui e do seletor universal, onde o que eu configurar aqui sera configurado para qualquer outro codigo que eu escrever abaixo*/
+/* esse box-sizing: border-box e usado para que ele respeite o limite setado no codigo do #container (que foi o nome dado nesse codigo.*/
+
+/* no local :root e onde criamos e deixamos todas as variaveis do nosso projeto*/
+:root {
+  /*para criar uma variavel basta usar o --nome-da-variavel , e para setar ela no codigo basta usar o var(--nome-da-variavel) que funciona. */
+  --text-color: white;
+  --bg-url: url(./assets/bg-mobile.jpg);
+  --stroke-color: rgba(255, 255, 255, 0.5);
+  --surface-color: rgba(255, 255, 255, 0.05);
+  --surface-color-hover: rgba(0, 0, 0, 0.02);
+  --highlight-color: rgba(255, 255, 255, 0.05);
+  --switch-bg-url: url(./assets/moon-stars.svg);
+}
+
+.light {
+  --text-color: black;
+  --bg-url: url(./assets/bg-mobile-light.jpg);
+  --stroke-color: rgba(0, 0, 0, 0.5);
+  --surface-color: rgba(0, 0, 0, 0.05);
+  --surface-color-hover: rgba(0, 0, 0, 0.02);
+  --highlight-color: rgba(0, 0, 0, 0.1);
+  --switch-bg-url: url(./assets/sun.svg);
+}
+
+body {
+  /*
+  background-image: url(./assets/bg-mobile.jpg);
+  background-repeat: no-repeat;
+  background-position: top center;
+  background-size: cover;
+  */
+
+  /*background: color image repeat position/size*/
+  background: var(--bg-url) no-repeat top center/cover;
+
+  /*esse codigo acima eh uma maneira mais rapida e simples de fzr o msm trampo q o codigo (da anotacao) acima*/
+}
+
+body * {
+  font-family: "Inter", sans-serif;
+  /* quando vc escreve por exemploe body * tu ta determinando que oq tu escrever aq deve ser implementado para o body inteiro, independente doq vc fizer no codigo. (O que determina esse poder eh o * */
+  color: var(--text-color);
+}
+
+#container {
+  width: 360px;
+  margin: 56px auto 0px;
+  padding: 0 24px;
+  /* margin e oq define a posicao da box (do container nesse caso) mais focado no alinhamento da img,*/
+
+  /* o codigo abaixo e a maneira mais "complexa" de se usar o margin pra caso voce queira facilitar e deixar seu codigo com menos itens escritos. A box padrao do CSS funciona como se fosse um relogio (Cima, Direita, Baixo e por fim Esquerda) entao conforme vc for colocando itens no margin abreviado (codigo acima) ele vai usando as medidas nessa ordem, caso tenha apenas duas medidas no codigo a primeira medida funciona para as partes verticais, e a segunda medida para as horizontais.*/
+
+  /* Segue exemplo do codigo nao simplificado.
+  margin-top: 56px;
+  margin-right: auto;
+  margin-bottom: auto;
+  margin-left: auto;
+  */
+
+  border-radius: 20px;
+  /*border-radius e responsavel pelo arredondamento da borda*/
+  /* existe uma regra no css que nao permite que a box seja alinha nas partes superiores e enferiores, apenas nas laterais */
+}
+
+/*profile*/
+#profile {
+  text-align: center;
+  padding: 24px;
+  /* caso vc tenha elementos que sao inline ou block, tu precisa (descobrir oq teu elemento eh) criar um "pai" pra ele e fzr esse text-align pra "quebrar" a regra e conseguir jogar o avatar centralizado (como nesse codigo aq) */
+}
+
+/* CHECAR CSS tricks para estudar melhor o css*/
+/* existe varias maneiras de realizar o alinhamento de display*/
+
+#profile img {
+  width: 112px;
+  border-radius: 80px;
+  /* em elementos inline vc nao consegue aplicar o margin: auto*/
+}
+
+#profile p {
+  font-weight: 500;
+  line-height: 24px;
+  margin-top: 8px;
+}
+
+/*switch*/
+
+#switch {
+  position: relative;
+  /* o position relative aqui nessa parte, faz o position absolute do #switch button{} ficar em qualquer posicao contanto que esteja dentro do #switch{} */
+  width: 64px;
+
+  margin: 0 auto;
+  padding: 4px auto;
+}
+
+#switch button {
+  width: 32px;
+  height: 32px;
+  background: white var(--switch-bg-url) no-repeat center;
+  border: 0;
+  border-radius: 50%;
+
+  /* o comando position: absolute, e responsavel por fazer a sobreposicao de itens no CSS*/
+  position: absolute;
+  top: 50%;
+  left: 0;
+
+  /* ja o comando z-index: e responsavel por determinar a posicao da layer do item no CSS*/
+  z-index: 1;
+  /* o codigo abaixo e usado para linkar a imagem que esta no projeto diretamente no CSS, mas como nesse projeto nos temos o image repeat, teremos q usar a url da imagem no background e por o codigo no-repeat.
+  background-image: url(./assets/moon-stars.svg); */
+
+  transform: translateY(-50%);
+  /*O comando transform: nada mais faz doq transformar o item que voce esta mexendo, nesse codigo em especifico que estamos fazendo estamos usando o comando transform: translateY(-50%); para que ele fique apenas metade dele (50%) acima da barrinha do trackerzinho (a barra de deslize do botao) para que o comando top: 50%; (usado logo acima do comando right: 0;) faca com que o nosso botao fique 100% centralizado a nossa barra de deslize (tracker)*/
+}
+
+.light #switch button{
+  right: 0;
+  left: initial;
+}
+
+#switch span {
+  display: block;
+  width: 64px;
+  height: 24px;
+  background: var(--surface-color);
+  border: 1px solid var(--stroke-color);
+  -webkit-backdrop-filter: blur(4px);
+  border-radius: 9999px;
+}
+
+/*Links*/
+ul {
+  list-style: none;
+
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  padding: 24px 0;
+}
+
+ul li a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 16px 24px;
+
+  background: var(--surface-color);
+  border: 1px solid var(--stroke-color);
+  border-radius: 8px;
+
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  /*Esse -webkit- e usado pq alguns browser nao funcionam direito o backdrop-filter usado acima, pra vc saber basta anotar a tag/codigo que vc quer verificar e usar o site caniuse.com e la vai dizer se funciona ou nao, ou se tem alguma flag dizendo o que voce precisa implementar no codigo para que ele funcione (como esse -webkit- colocado no codigo acima)*/
+
+  text-decoration: none;
+  /* Esse text-decoration serve pra tu  personalizar o texto que aparece, quando tu seta ele como none ele fica somente o texto normal, mas se vc por exemplo quiser por um underline no texto basta usar o comando text-decoration: underline; */
+  font-weight: 500;
+  transition: background 0.2s;
+}
+
+/* o :hover eh um pseudo-selector, usado aqui para aplicar as um efeito como se vc estivesse selecionando o item quando vc passe o mouse por cima da boxes*/
+ul li a:hover {
+  background: var(--surface-color-hover);
+  border: 1.5px solid var(--text-color);
+}
+
+/*social links*/
+#social-links {
+  display: flex;
+  justify-content: center;
+
+  padding: 24px 0;
+
+  font-size: 24px;
+}
+
+#social-links a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 16px;
+  transition: background 0.2s;
+  border-radius: 50%;
+}
+
+#social-links a:hover {
+  background: var(--highlight-color);
+}
+
+footer {
+  padding: 24px 0;
+  text-align: center;
+  font-size: 14px;
+}
