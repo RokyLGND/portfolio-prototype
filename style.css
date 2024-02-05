@@ -49,7 +49,8 @@ body * {
 }
 
 #container {
-  width: 360px;
+  width: 100%;
+  max-width: 588px;
   margin: 56px auto 0px;
   padding: 0 24px;
   /* margin e oq define a posicao da box (do container nesse caso) mais focado no alinhamento da img,*/
@@ -122,7 +123,7 @@ body * {
   /*O comando transform: nada mais faz doq transformar o item que voce esta mexendo, nesse codigo em especifico que estamos fazendo estamos usando o comando transform: translateY(-50%); para que ele fique apenas metade dele (50%) acima da barrinha do trackerzinho (a barra de deslize do botao) para que o comando top: 50%; (usado logo acima do comando right: 0;) faca com que o nosso botao fique 100% centralizado a nossa barra de deslize (tracker)*/
 }
 
-.light #switch button{
+.light #switch button {
   right: 0;
   left: initial;
 }
